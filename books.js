@@ -1,7 +1,7 @@
 // Load express
 const express = require("express");
 const app = express();
-
+const PORT = process.env.PORT || 3000;
 // load Book model 
 
 require('./Book')
@@ -119,4 +119,11 @@ app.get('/books/:id', (req, res) =>{
 
 
 
-app. listen(4545, () =>console.log("Up and running! -- This is our Books service"));
+        app.listen(PORT, () => {
+          console.log(`Server running on http://localhost:${PORT}`);
+        });
+      
+      
+      // Exportation pour Vercel (nécessaire pour le déploiement)
+      module.exports = app;
+      
